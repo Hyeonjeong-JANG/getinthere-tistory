@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .navbar-nav .nav-item{
+            margin-bottom: 15px;    
+        }
+        /* 링크 호버 */
+         .icon-link-hover:hover {
+            color: rgb(25, 135, 84);
+        }
+        .content-preview {
+            color: #747474;
+            display: block;
+            cursor: pointer;
+        }
+        .content-preview:hover {
+            color: black;
+        }
+
+        /* 페이지네이션 */
+        .pagination .page-link {
+            color: grey;
+            background-color: #e8f9e0;
+            border-radius: 50%;
+            margin: 0 5px;border: none;
+            padding: 3px 10px;
+        }
+        .pagination .page-link:hover{
+            border-bottom: 1px solid rgb(206, 206, 206);
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+        .pagination .page-item:first-child .page-link,
+        .pagination .page-item:last-child .page-link {
+            background-color: #fff;
+            border-radius: 0;
+        }
+
+        /* 인기 게시글 */
+        .famous-post>div{
+            margin-right: 15px;
+        }
+        .famous-post>div:last-child{
+            margin-right: 0;
+        }
+
+        /* footer */
+        footer>div>div{
+            width: 33.3%;
+        }
+
+        .footer-title>div{
+            font-size: 25px;
+        }
+        .footer-title>div a{
+           cursor: pointer;
+        }
+        .admin>div>div{
+            width: 50px;
+            height: 50px;
+            background-color: #e6e6e6; 
+            margin-right: 10px;
+            position: relative;
+            border-radius: 50%;
+        }
+        .admin>div>div>a>i{
+            position: absolute;
+            top: 50%;left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        /* detail page */
+        .content{
+            margin-bottom: 30px;
+        }
+        .btn-area{
+            margin-bottom: 30px;
+        }
+        .btn-area>div{
+            border: 1px solid #e6e6e6;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+        }
+        .btn-area>div:first-child{
+           margin-right: 7px;
+        }
+
+        .btns>div{
+            margin-right: 10px;
+        }
+        .btns>div:last-child{
+            margin-right: 0;
+        }
+        .hidden{
+            display: none;
+        }
+
+        .share{
+            position: relative;
+        }
+        .share-box{
+            position: absolute; 
+            top: -163px; 
+            left: 0; 
+            background-color: white; 
+            border: 1px solid #e6e6e6;
+            padding: 20px; 
+            width: 135px;
+        }
+        .share-box>div{
+            margin-bottom: 10px;
+        }
+        .share-box>div:last-child{
+            margin-bottom: 0;
+        }
+        .share-box::after,
+        .report-box::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 10%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        .share-box::before,
+        .report-box::before{
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 10%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: #e6e6e6 transparent transparent transparent;
+        }
+        .report{
+            position: relative;
+        }
+        .report-box{
+            position: absolute; 
+            top: -68px; 
+            left: -5px; 
+            background-color: white; 
+            border: 1px solid #e6e6e6;
+            padding: 15px; 
+            width: 80px;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- 내비게이션 시작 -->
+    <nav class="navbar d-flex " style="margin-bottom: 30px; height: 168px; border-bottom: 1px solid #e6e6e6;">
+        <div class="container-fluid">
+            <!-- 햄버거 버튼 시작 -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="border: none; width: 50px;height: 50px;">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <!-- <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5> -->
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-5">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">스프링부트 with JPA 개념 (3)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">스프링부트 with JPA 블로그 (18)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Flutter (0)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">React (0)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Java (3)</a>
+                </li>
+              </ul>
+              <div class="nav-footer">
+                <div class="d-flex" style="margin-bottom: 20px;">
+                    <div style="margin-right: 10px;"><i class="fa-brands fa-twitter"></i></div>
+                    <div><i class="fa-brands fa-instagram"></i></div>
+                </div>
+                <div class="d-flex" style="margin-bottom: 7px;">
+                    <div>Today 24</div>
+                    <div style="width: 2px;height: 2px; background-color: black; margin: 12px 10px; border-radius: 50%;"> </div>
+                    <div>Yesterday 5</div>
+                </div>
+                <div>Total 15,782</div>
+              </div>
+            </div>
+          </div>
+          <!-- 햄버거 버튼 끝 -->
+          <a class="navbar-brand" href="#" style="font-size: 30px;width: calc(100% - 155px); text-align: center;">GetInThere</a>
+          <!-- 검색 버튼 시작 -->
+          <!-- 토글 -->
+            <form class="d-flex " role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="display: none;">
+                <button class="btn" type="submit" style="width: 50px;height: 50px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          <!-- 검색 버튼 끝 -->
+        </div>
+      </nav>
+    <!-- 내비게이션 끝 -->
+
+    <div>
+        <div class="title">스프링부트 with JPA 블로그 18강 - 특강 무한 참조 방지하기</div>
+        <div class="d-flex" style="margin-bottom: 15px;">
+            <div class="category" style="border-bottom: 1px solid black;">스프링부트 with JPA 블로그</div>
+            <div style="width: 2px;height: 2px; background-color: black; margin: 11px 10px; border-radius: 50%;"> </div>
+            <div>2020.7.28. 00:29</div>
+         </div>
+    </div>
+<div class="content">
+    (1) Entity로 받고 Json직렬화 하기 전에 DTO 생성후 복사하기
+
+    BeanUtils.copyProperties(A,B) 
+
+    (2) 처음부터 DTO로 DB에서 받기
+
+    (3) @JsonIgnore
+
+    (4) @JsonIgnoreProperties({"board"})
+
+    (5) @JsonBackReference @JsonManagedReference 
+</div>
+<div class="btn-area d-flex">
+    <div class="btns d-flex">
+        <div class="like">
+            <div class="empty-count"><i class="fa-regular fa-heart"></i> 공감</div>
+            <div class="not-empty-count hidden"><i class="fa-solid fa-heart"  style="color: red;"></i> 1</div>
+        </div>
+        <div class="share">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <div class="share-box hidden">
+                <div><i class="fa-solid fa-paperclip"></i> URL 복사</div>
+                <div><i class="fa-solid fa-comment"></i> 카카오톡 공유</div>
+                <div><i class="fa-brands fa-square-facebook"></i> 페이스북 공유</div>
+                <div><i class="fa-brands fa-x-twitter"></i> 엑스 공유</div>
+            </div>
+        </div>
+        <div class="report">
+            <i class="fa-solid fa-ellipsis"></i>
+            <div class="report-box hidden">신고하기</div>
+        </div>
+    </div>
+    <div class="subscribe-btn">구독하기</div>
+</div>
+<div class="list"></div>
+<div class="related-list container">
+    <div class="d-flex">
+        <h1>관련글</h1>
+        <div class="more">관련글 더보기</div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="famous-post d-flex" style="margin-bottom: 30px;">
+            <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                    <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                    <div>GetInThere</div>
+                </div>
+            </div>
+            <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                    <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                    <div>GetInThere</div>
+                </div>
+            </div>
+            <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                    <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                    <div>GetInThere</div>
+                </div>
+            </div>
+            <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                    <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                    <div>GetInThere</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 인기 포스트 시작 -->
+    <div class="container">
+        <h1>인기포스트</h1>
+        <div class="row justify-content-center">
+            <div class="famous-post d-flex" style="margin-bottom: 30px;">
+                <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                    <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                        <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                        <div>GetInThere</div>
+                    </div>
+                </div>
+                <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                    <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                        <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                        <div>GetInThere</div>
+                    </div>
+                </div>
+                <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                    <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                        <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                        <div>GetInThere</div>
+                    </div>
+                </div>
+                <div style="width: calc((100% - 45px) / 4); height: 150px; background-color: black; opacity: 0.5; position: relative; border-radius: 10px;">
+                    <img src="#" style="width: 100%; height: 100%;border-radius: 10px;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 180px; color: white;">
+                        <div><b>스프링 부트 with JPA 블로그 6강 - yaml 설정</b></div>
+                        <div>GetInThere</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 인기 포스트 끝 -->
+      <footer class="container">
+        <div class="d-flex">
+            <div class="footer-title">
+                <h3>ABOUT ME</h3>
+                <div>넌 머든 될 수 있지</div>
+            </div>
+            <div class="footer-title">
+                <h3>LINK</h3>
+                <div><a>Github</a></div>
+                <div><a>Naver Blog</a></div>
+                <div><a>Youtube</a></div>
+            </div>
+            <div class="admin footer-title">
+                <h3>ADMIN</h3>
+                <div class="d-flex">
+                    <div><a><i class="fa-solid fa-lock"></i></a></div>
+                    <div><a><i class="fa-solid fa-pen"></i></a></div>
+                </div>
+            </div>
+        </div>
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
